@@ -2,6 +2,13 @@ class TeachersController < ApplicationController
 
   def index
   	@teachers = Teacher.all
+    if params[:sort_type].present?
+      if params[:sort_type].eql? "name"
+        @teachers = @teachers.sort_by { |t| t.name }
+      else
+        @teachers = @teachers.sort_by { |t| t.active_subjects }.reverse
+      end
+    end
   end
 
   def new
