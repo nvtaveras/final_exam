@@ -6,6 +6,7 @@ class TeachersController < ApplicationController
 
   def new
   	@teacher = Teacher.new
+    6.times { @teacher.subjects.build }
   end
 
   def create
@@ -45,6 +46,6 @@ class TeachersController < ApplicationController
   end
 
   def teacher_params
-  	params.require(:teacher).permit(:name, :code)
+  	params.require(:teacher).permit(:name, :code, subjects_attributes: [:id, :subject_name, :subject_id, :active])
   end
 end

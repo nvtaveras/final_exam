@@ -1,17 +1,24 @@
-<h1> Editing <b><%= @teacher.name + " | " + @teacher.code.to_s %> </b></h1>
+<h1>Edit an awesome teacher!</h1>
+<h2><b><%= @teacher.name + " | " + @teacher.code.to_s %> </b></h2>
 <div class="row">
   <div class="col-md-5">
     <%= form_for @teacher, { role: 'form' } do |f| %>
 
-      <%= f.label :name, "Name" %>
-      <%= f.text_field :name, { class: 'form-control' } %>
-      <br />
+      <%= f.fields_for :subjects, @teacher.subjects do |builder| %>
 
-      <%= f.label :code, "Code" %>
-      <%= f.number_field :code, { class: 'form-control' } %>
-      <br />
+        <%= builder.label :subject_name, "Subject_name" %>
+        <%= builder.text_field :subject_name %>
 
-     <%= f.submit 'Add teacher', { class: 'btn btn-success' } %>
+        <%= builder.label :subject_id, "Subject ID" %>
+        <%= builder.number_field :subject_id %>
+
+        <%= builder.label :active, "Active" %>
+        <%= builder.check_box :active %>
+        <br />
+
+      <% end %>
+
+     <%= f.submit 'Update teacher', { class: 'btn btn-success' } %>
 
     <% end %>
   </div>

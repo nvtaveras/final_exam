@@ -10,6 +10,21 @@
       <%= f.label :code, "Code" %>
       <%= f.number_field :code, { class: 'form-control' } %>
       <br />
+      
+      <%= f.fields_for :subjects do |builder| %>
+
+        <%= builder.label :subject_name, "Subject_name" %>
+        <%= builder.text_field :subject_name %>
+
+        <%= builder.label :subject_id, "Subject ID" %>
+        <%= builder.number_field :subject_id %>
+
+        <%= builder.label :active, "Active" %>
+        <%= builder.check_box :active %>
+        <br />
+
+      <% end %>
+
 
      <%= f.submit 'Add teacher', { class: 'btn btn-success' } %>
 
