@@ -10,7 +10,7 @@
       <tr>
         <td><%= t.name %> </td>
         <td><%= t.code %> </td>
-        <td> 55 </td>
+        <td><%= t.active_subjects %></td>
         <td width="55"><%= link_to 'Edit', edit_teacher_path(t) %></td>
         <td><%= link_to 'Delete', t, :method => 'delete' %></td>
       </tr>
